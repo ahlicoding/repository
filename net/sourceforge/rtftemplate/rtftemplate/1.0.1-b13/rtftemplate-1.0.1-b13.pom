@@ -1,0 +1,197 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.sourceforge.rtftemplate</groupId>
+  <artifactId>rtftemplate</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0.1-b13</version>
+  <name>RTFTemplate</name>
+  <url>http://rtftemplate.sourceforge.net/</url>
+  <description>RTF template engine</description>
+  <dependencies>
+    <dependency>
+      <groupId>velocity</groupId>
+      <artifactId>velocity</artifactId>
+      <version>1.5</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>commons-beanutils</groupId>
+      <artifactId>commons-beanutils</artifactId>
+      <version>1.6</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency> 
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>1.0.4</version>
+      <scope>compile</scope>
+    </dependency> 
+    <dependency>
+      <groupId>commons-digester</groupId>
+      <artifactId>commons-digester</artifactId>
+      <version>1.7</version>
+      <scope>compile</scope>
+    </dependency>    
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>1.1</version>
+      <scope>compile</scope>
+    </dependency>       
+    <dependency>
+      <groupId>servletapi</groupId>
+      <artifactId>servletapi</artifactId>
+      <version>2.3</version>
+      <type>jar</type>
+    </dependency>    
+  <!-- Spring -->
+  <dependency>    
+    <groupId>springframework</groupId>
+    <artifactId>spring</artifactId>
+    <version>1.2.6</version>
+  </dependency>    
+  <dependency>    
+    <groupId>freemarker</groupId>
+    <artifactId>freemarker</artifactId>
+    <version>2.3.8</version>
+  </dependency>    
+  </dependencies>
+ 
+    
+  <developers>
+    <developer>
+      <id>azerr</id>
+      <name>Angelo ZERR</name>
+      <email>angelo.zerr@gmail.com</email>
+      <url/>
+      <organization></organization>
+      <organizationUrl> </organizationUrl>
+      <roles>
+        <role>Developer</role>
+        <role>Documentation</role>
+      </roles>
+      <timezone/>
+      <properties/>
+    </developer>
+    <developer>
+      <id></id>
+      <name>Jean-Claude FIGUEIRAS</name>
+      <email>reuf@netcourrier.com</email>
+      <url/>
+      <organization></organization>
+      <organizationUrl> </organizationUrl>
+      <roles>
+        <role>Graphic Artist</role>
+      </roles>
+      <timezone/>
+      <properties/>
+    </developer>
+  </developers>
+  
+  
+  <licenses>
+    <license>
+      <name>The LGPL open source license</name>
+      <url>http://www.gnu.org/licenses/lgpl.txt</url>
+      <distribution>repo</distribution>
+      <comments></comments>
+    </license>
+  </licenses>
+  <scm>
+    <connection>pserver:anonymous@rtftemplate.cvs.sourceforge.net:/cvsroot/rtftemplate</connection>
+	<url>cvs.sourceforge.net/viewcvs.py/rtftemplate</url>
+  </scm>
+  <reporting>
+      <plugins>
+        <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jxr-maven-plugin</artifactId>
+      </plugin> 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <reportSets>
+           <reportSet>
+              <reports>
+                 <report>dependencies</report>
+                 <report>project-team</report>
+                 <report>license</report>
+              </reports>
+           </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <configuration>
+          <inputEncoding>ISO-8859-1</inputEncoding>
+            <outputEncoding>UTF-8</outputEncoding>
+            <locales>en,fr</locales>
+          </configuration>
+        </plugin>   
+        <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <index>true</index>            
+            <manifest>
+              <packageName>net.sourceforge.rtftemplate</packageName>
+            </manifest>
+            <manifestEntries>
+              <mode>development</mode>
+              <url>${pom.url}</url>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+      
+      
+            <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+          <descriptor>assembly/src.xml</descriptor>
+          <outputDirectory>target/dist</outputDirectory>
+
+
+        </configuration>
+        
+      </plugin> 
+      
+         </plugins>
+         
+      </reporting>
+      
+<distributionManagement>
+  <site>
+    <id>website</id>
+    <url>scp://rtftemplate.sourceforge.net/</url>
+  </site>
+</distributionManagement>      
+      
+      
+  <build>
+    <directory>target</directory>
+    <outputDirectory>target/classes</outputDirectory>
+    <finalName>${artifactId}-${version}</finalName>
+    <testOutputDirectory>target/test-classes</testOutputDirectory>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <scriptSourceDirectory>src/main/scripts</scriptSourceDirectory>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <directory>src/test/resources</directory>
+      </testResource>
+    </testResources>
+  </build>
+      
+</project>
